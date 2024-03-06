@@ -103,7 +103,6 @@ public class TodoList {
             descend.add(urgent.getUrgency());
         }
         Collections.sort(descend, Collections.reverseOrder());
-        System.out.println(descend);
 
         ArrayList<Task> descending = new ArrayList<>();
         for (int i = 0; i < descend.size(); i++){
@@ -115,8 +114,6 @@ public class TodoList {
                 }
             }
         }
-
-
 
         for (int i = 0; i<descending.size(); i++){
             Task task = descending.get(i);
