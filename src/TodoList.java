@@ -97,10 +97,32 @@ public class TodoList {
      */
     public String toString() {
         String result = "To-do List of " + owner;
-        for (int i = 0; i<tasks.size(); i++){
-            Task task = tasks.get(i);
+        ArrayList<Integer> descend = new ArrayList<>();
+        for (int i = 0; i < tasks.size(); i++){
+            Task urgent = tasks.get(i);
+            descend.add(urgent.getUrgency());
+        }
+        Collections.sort(descend, Collections.reverseOrder());
+        System.out.println(descend);
+
+        ArrayList<Task> descending = new ArrayList<>();
+        for (int i = 0; i < descend.size(); i++){
+            int urgency = descend.get(i);
+            for(int x = 0; x < tasks.size(); x++){
+                Task task = tasks.get(x);
+                if (task.getUrgency()==urgency){
+                    descending.add(task);
+                }
+            }
+        }
+
+
+
+        for (int i = 0; i<descending.size(); i++){
+            Task task = descending.get(i);
             result += "\n"+task.getName()+"\t"+task.getUrgency();
         }
+        System.out.println(result);
         return result;
         
     }
